@@ -61,7 +61,7 @@ const PagesTable = (props: { time: number }) => {
           <tr style={{ border: '2px solid #555' }}>
             {
               columns.map(c => (
-                <th style={{ width: c.field == 'name' ? 500 : 100 }} ><Typography>{c.headerName}</Typography></th>
+                <th key={c.field} style={{ width: c.field == 'name' ? 500 : 100 }} ><Typography>{c.headerName}</Typography></th>
               ))
             }
           </tr>
@@ -69,10 +69,10 @@ const PagesTable = (props: { time: number }) => {
       body={<tbody>
         {
           pages.map(p => (
-            <tr>
+            <tr key={p.id}>
               {
                 columns.map(c => (
-                  <td style={{ border: '1px solid #eee', cursor: 'pointer' }} onClick={() => handleNavigation(p.id, p.name)}>
+                  <td key={c.field} style={{ border: '1px solid #eee', cursor: 'pointer' }} onClick={() => handleNavigation(p.id, p.name)}>
                     <Typography>
                       {
                         c.field == 'name'

@@ -58,7 +58,7 @@ const LinkTable = () => {
           <tr style={{ border: '2px solid #555' }}>
             {
               columns.map(c => (
-                <th style={{ width: c.field == 'name' ? 200 : 400 }} ><Typography>{c.headerName}</Typography></th>
+                <th key={c.field} style={{ width: c.field == 'name' ? 200 : 400 }} ><Typography>{c.headerName}</Typography></th>
               ))
             }
           </tr>
@@ -66,10 +66,10 @@ const LinkTable = () => {
         body={<tbody>
           {
             links.map(l => (
-              <tr>
+              <tr key={l.id}>
                 {
                   columns.map(c => (
-                    <td style={{ border: '1px solid #eee', width: c.field == 'name' ? 200 : 400, textOverflow: 'ellipsis', overflow: "hidden" }}>
+                    <td key={c.field} style={{ border: '1px solid #eee', width: c.field == 'name' ? 200 : 400, textOverflow: 'ellipsis', overflow: "hidden" }}>
                       <Typography noWrap textOverflow="ellipsis">
                         {
                           c.field == 'name'

@@ -8,26 +8,32 @@ services:
       - "15672:15672"
       - "5672:5672"
 
-# Disabled temporarily due a CORS error
-#   backend:
-#     build:
-#       context: .
-#       dockerfile: ./docker/Dockerfile
-#     entrypoint: /app/run-backend.sh
-#     expose:
-#       - 5000
-#     network_mode: "host"
-#     volumes:
-#       - database:/app
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    entrypoint: /app/run-backend.sh
+    expose:
+      - 5000
+    network_mode: "host"
+    volumes:
+      - database:/app
 
-#   celery:
-#     build:
-#       context: .
-#       dockerfile: ./docker/Dockerfile
-#     entrypoint: /app/run-celery.sh
-#     network_mode: "host"
-#     volumes:
-#       - database:/app
+  celery:
+    image: webscrapper_backend:latest
+    entrypoint: /app/run-celery.sh
+    network_mode: "host"
+    volumes:
+      - database:/app
 
-# volumes:
-#   database: {}
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.frontend
+    command: "npm run dev"
+    expose:
+      - 3000
+    network_mode: "host"
+
+volumes:
+  database: {}

@@ -35,6 +35,14 @@ Keep in mind that the body of a link sometimes is not only text and could be oth
 
 1. `git clone <repository>`
 
+### Short way
+
+2. `docker-compose build`
+3. `docker-compose up`
+
+That's it!
+
+### Long way
 - Dependenciies (Rabbitmq)
 
 2. `cd webscrapper`
@@ -60,5 +68,6 @@ Keep in mind that the body of a link sometimes is not only text and could be oth
 13. `npm run dev`
 
 ## Demo
+Go to `http://localhost:3000` and you will be able to see how it works.
 
 ![image](./how-it-works.gif)
